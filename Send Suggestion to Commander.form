@@ -1,0 +1,53 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "a89018a"
+  },
+  "schemaVersion": 19,
+  "id": "send-suggestion-to-commander-1j42wts",
+  "components": [
+    {
+      "text": "=suggestion",
+      "type": "text",
+      "layout": {
+        "row": "Row_0l7h418",
+        "columns": null
+      },
+      "id": "Field_0vihq4v"
+    },
+    {
+      "label": "Enter Response to Suggestion",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1lebh7j",
+        "columns": null
+      },
+      "id": "Field_19e9e5m",
+      "key": "reportFromCommander"
+    },
+    {
+      "label": "Update Mission Status",
+      "values": [
+        {
+          "label": "Complete",
+          "value": "Complete"
+        },
+        {
+          "label": "On Going",
+          "value": "On Going"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1o8qa1c",
+        "columns": null
+      },
+      "id": "Field_0s35p43",
+      "key": "mission.missionStatus",
+      "defaultValue": "On Going"
+    }
+  ],
+  "type": "default"
+}

@@ -1,0 +1,23 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "a89018a"
+  },
+  "schemaVersion": 19,
+  "id": "Form_1bxu5w1",
+  "components": [
+    {
+      "label": "Enter a message for the crew",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0whiaw9",
+        "columns": null
+      },
+      "id": "Field_0zhg5hi",
+      "key": "crewMessage"
+    }
+  ],
+  "type": "default"
+}

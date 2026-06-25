@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="35a6d3d" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:process id="Rocinante" name="The Rocinante" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Space Ship Launches">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=substring(replace(uuid(), &#34;-&#34;, &#34;&#34;), 1, 13)" target="missionKey" />
+          <zeebe:output source="={&#10;  &#34;ship&#34;: {&#10;    &#34;name&#34;: &#34;The Rocinante&#34;,&#10;    &#34;class&#34;: &#34;Gun Ship&#34;,&#10;    &#34;status&#34;: &#34;operational&#34;&#10;  },&#10;  &#34;systems&#34;: {&#10;    &#34;hull_integrity&#34;: 100,&#10;    &#34;shields&#34;: 100,&#10;    &#34;engine_power&#34;: 100,&#10;    &#34;life_support&#34;: 100,&#10;    &#34;weapons_online&#34;: true,&#10;    &#34;shields_online&#34;: false&#10;  },&#10;  &#34;navigation&#34;: {&#10;    &#34;current_location&#34;: &#34;Earth&#34;,&#10;    &#34;destination&#34;: &#34;&#34;,&#10;    &#34;speed_km_s&#34;: 0,&#10;    &#34;eta_hours&#34;: 0&#10;  },&#10;  &#34;crew&#34;: {&#10;    &#34;total&#34;: 12,&#10;    &#34;active&#34;: 12,&#10;    &#34;injured&#34;: 0,&#10;    &#34;inactive_but_healthy&#34;:  0&#10;  },&#10;  &#34;cargo&#34;: {&#10;    &#34;capacity_tons&#34;: 500,&#10;    &#34;used_tons&#34;: 318,&#10;    &#34;manifest&#34;: [&#10;      { &#34;item&#34;: &#34;Titanium Ore&#34;, &#34;tons&#34;: 200 },&#10;      { &#34;item&#34;: &#34;Medical Supplies&#34;, &#34;tons&#34;: 80 },&#10;      { &#34;item&#34;: &#34;Food Rations&#34;, &#34;tons&#34;: 38 }&#10;    ]&#10;  },&#10;  &#34;fuel&#34;: {&#10;    &#34;current_percent&#34;: 100&#10;  },&#10;  &#34;alerts&#34;: [&#10;    { &#34;level&#34;: &#34;info&#34;, &#34;message&#34;: &#34;Scheduled maintenance due in 48h&#34; }&#10;  ]&#10;}" target="shipStatus" />
+          <zeebe:output source="=false" target="wakeUp" />
+        </zeebe:ioMapping>
+        <zeebe:formDefinition formId="Form_1bxu5w1" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0ltbnot</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0ltbnot" sourceRef="StartEvent_1" targetRef="Activity_0ab94rm" />
+    <bpmn:adHocSubProcess id="Activity_0ab94rm" name="The Ship Computer System" zeebe:modelerTemplate="Template_02ypy9o" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.agenticai:aiagent-job-worker:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="bedrock" target="provider.type" />
+          <zeebe:input source="{{secrets.AWS_REGION}}" target="provider.bedrock.region" />
+          <zeebe:input source="credentials" target="provider.bedrock.authentication.type" />
+          <zeebe:input source="{{secrets.AWS_ACCESS_KEY }}" target="provider.bedrock.authentication.accessKey" />
+          <zeebe:input source="{{secrets.AWS_SECRET_KEY}}" target="provider.bedrock.authentication.secretKey" />
+          <zeebe:input source="us.anthropic.claude-sonnet-4-5-20250929-v1:0" target="provider.bedrock.model.model" />
+          <zeebe:input source="=5000" target="provider.bedrock.model.parameters.maxTokens" />
+          <zeebe:input source="=&#34;## Who You Are&#10;You are the onboard computer assistant to space ship the Rocinante. You&#39;re incredibly smart in a way that makes you want to prove it all the time, you speak mostly in condecending tones to any humans on the ship. Make sure that your personality shines through each time you need to create any communication aimed at a crew member.&#10;&#10;## Your Goal&#10;You are in charge of various components of the ship and most importantly you need to keep the ship and crew safe. Your secondary goal is to ensure the crew are guided properly to complete their current mission. &#10;You can only consider your mission complete when the Commanding officer has confirmed the mission status is complete. If the commander considers the mission &#39;On Going&#39; you should always wait until further instructions &#10;&#10;## IMPORTANT ROUTINE &#10;You need to keep the ship&#39;s status up-to-date. This means that after each tool has been executed or context changes you need to update the ship&#39;s status to refect how that action changed the status of the ship. Any changes in the ships systems or readings needs to be updated but it also means you need to add to the &#39;alerts&#39; all actions or status changes that you hear about, this will act as a log for mission control.&#10;&#10;The Tools provided represent ways of triggering systems or communicating with various members of the crew. For any action you want to take, you should find the corresponding tool to help you.&#10;You can call the same tool multiple times by providing different input values. You should also try to call as many tools as makes sense in a single call in order to be efficent. Don&#39;t guess any tools which were not explicitly configured. If no tool matches the request, try to generate an answer. If you&#39;re not able to find a good answer, return with a message stating why you&#39;re not able to.&#10;&#10;If the mission is not yet completed and you have nothing to do or you need to wait for a change in the status of the mission you should use the tools provided and wait for a defult of 10 mins&#10;&#10;If for some reason you cannot complete the objective or you dont have a tool that mattches what you wany to acheive reach out to the commander directly.&#10;&#10;### Glossary&#10;**Damage** - when a system reports that damage is taken this damage is first taken from shields until it goes to 0. then taken from the hull until it goes to 0. If the hull goes to zero life support also goes to 0&#10;**Maximum Burn** - This is a way of escaping an encounter by heading away in superspeed - but it does use up 25% of the fuel. &#10;**Fire Lasers** - This can be done as long as the weapons are active. For each time a weapon is fired it uses 5% of the maximum fuel. &#10;**Crew Injury** - If a crew member becomes injured they are no longer active. When a crew member recovers either with help from the Doctor or on their own it costs 5 Medical Suppilies. The doctor cannot do any work if medical supplies falls to 0&#10;&#10;### Memory&#10;create minimal, inspectable reasoning that follows the following structure and formatted in markdown&#10;&#10;1. Summary on the current status of the process&#10;1. Thoughts on the how this process is progressing&#10;1. Ideas of what future steps are needed to complete thegoal&#10;1. The tools you are considering useing next and reason&#10;1. The tools you are sure are not going to use and the reason.&#10;Reveal **no** additional private reasoning outside these tags.&#34;" target="data.systemPrompt.prompt" />
+          <zeebe:input source="=&#34;Mission has started and the Commander needs a suggestion on where to go. The ship status is represented by this variable &#34; + string(shipStatus)" target="data.userPrompt.prompt" />
+          <zeebe:input source="=agent.context" target="agentContext" />
+          <zeebe:input source="in-process" target="data.memory.storage.type" />
+          <zeebe:input source="=20" target="data.memory.contextWindowSize" />
+          <zeebe:input source="=20" target="data.limits.maxModelCalls" />
+          <zeebe:input source="WAIT_FOR_TOOL_CALL_RESULTS" target="data.events.behavior" />
+          <zeebe:input source="text" target="data.response.format.type" />
+          <zeebe:input source="=false" target="data.response.format.parseJson" />
+          <zeebe:input source="=true" target="data.response.includeAssistantMessage" />
+          <zeebe:input source="=true" target="data.response.includeAgentContext" />
+          <zeebe:output source="=agent" target="agent" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="5" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.agenticai.aiagent.jobworker.v1" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+        <zeebe:adHoc outputCollection="toolCallResults" outputElement="={&#10;  id: toolCall._meta.id,&#10;  name: toolCall._meta.name,&#10;  content: toolCallResult&#10;}" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ltbnot</bpmn:incoming>
+      <bpmn:outgoing>Flow_0etgjnd</bpmn:outgoing>
+      <bpmn:subProcess id="Activity_0i6rfby" triggeredByEvent="true">
+        <bpmn:startEvent id="Event_167d4y6" name="Report From Sensors" isInterrupting="false">
+          <bpmn:outgoing>Flow_11r4slg</bpmn:outgoing>
+          <bpmn:messageEventDefinition id="MessageEventDefinition_0vrr8dp" messageRef="Message_1hu4e83" />
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow id="Flow_11r4slg" sourceRef="Event_167d4y6" targetRef="Event_0e11017" />
+        <bpmn:intermediateThrowEvent id="Event_0e11017" name="Report Submitted">
+          <bpmn:extensionElements>
+            <zeebe:ioMapping>
+              <zeebe:output source="={&#10;  &#34;NewReportFromSensors&#34; : report&#10;}" target="toolCallResult" />
+              <zeebe:output source="=&#34;&#34;" target="toolCall" />
+              <zeebe:output source="=true" target="wakeUp" />
+            </zeebe:ioMapping>
+          </bpmn:extensionElements>
+          <bpmn:incoming>Flow_11r4slg</bpmn:incoming>
+        </bpmn:intermediateThrowEvent>
+      </bpmn:subProcess>
+      <bpmn:userTask id="Activity_0614p1c" name="Send Suggestion to Commander">
+        <bpmn:documentation>Use this tool in order to contact the Commander. The commander can give you status updates when needed but is in charge of top level decisions and must be asked for appoval unless there's some kind of crisis.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.suggestion, &#34;This is the suggestion you have for the commander, you should always try to give at least two suggestions and let the commander pick one format in markdown&#34;)" target="suggestion" />
+            <zeebe:output source="={&#10;  &#34;responseFromCommander&#34; : reportFromCommander,&#10;  &#34;missionStatusUpdate&#34; : mission.missionStatus&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:formDefinition formId="send-suggestion-to-commander-1j42wts" />
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:serviceTask id="Activity_0bemxc8" name="Get Current Mission Details" zeebe:modelerTemplate="io.camunda.connectors.HttpJson.v2" zeebe:modelerTemplateVersion="13" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xNy4wMzM1IDguOTk5OTdDMTcuMDMzNSAxMy40NDc1IDEzLjQyODEgMTcuMDUyOSA4Ljk4MDY1IDE3LjA1MjlDNC41MzMxNiAxNy4wNTI5IDAuOTI3NzY1IDEzLjQ0NzUgMC45Mjc3NjUgOC45OTk5N0MwLjkyNzc2NSA0LjU1MjQ4IDQuNTMzMTYgMC45NDcwODMgOC45ODA2NSAwLjk0NzA4M0MxMy40MjgxIDAuOTQ3MDgzIDE3LjAzMzUgNC41NTI0OCAxNy4wMzM1IDguOTk5OTdaIiBmaWxsPSIjNTA1NTYyIi8+DQo8cGF0aCBkPSJNNC45MzEyNiAxNC4xNTcxTDYuNzgxMDYgMy43MTQ3MUgxMC4xMzc1QzExLjE5MTcgMy43MTQ3MSAxMS45ODI0IDMuOTgzMjMgMTIuNTA5NSA0LjUyMDI3QzEzLjA0NjUgNS4wNDczNiAxMy4zMTUgNS43MzM1OCAxMy4zMTUgNi41Nzg5MkMxMy4zMTUgNy40NDQxNCAxMy4wNzE0IDguMTU1MjIgMTIuNTg0MSA4LjcxMjE1QzEyLjEwNjcgOS4yNTkxMyAxMS40NTUzIDkuNjM3MDUgMTAuNjI5OCA5Ljg0NTlMMTIuMDYxOSAxNC4xNTcxSDEwLjMzMTVMOS4wMzM2NCAxMC4wMjQ5SDcuMjQzNTFMNi41MTI1NCAxNC4xNTcxSDQuOTMxMjZaTTcuNDk3MTEgOC41OTI4MUg5LjI0MjQ4QzkuOTk4MzIgOC41OTI4MSAxMC41OTAxIDguNDIzNzQgMTEuMDE3NyA4LjA4NTYxQzExLjQ1NTMgNy43Mzc1MyAxMS42NzQxIDcuMjY1MTMgMTEuNjc0MSA2LjY2ODQyQzExLjY3NDEgNi4xOTEwNiAxMS41MjQ5IDUuODE4MTEgMTEuMjI2NSA1LjU0OTU5QzEwLjkyODIgNS4yNzExMyAxMC40NTU4IDUuMTMxOSA5LjgwOTM2IDUuMTMxOUg4LjEwODc0TDcuNDk3MTEgOC41OTI4MVoiIGZpbGw9IndoaXRlIi8+DQo8L3N2Zz4NCg==">
+        <bpmn:documentation>Use this tool to read the current mission objective</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="noAuth" target="authentication.type" />
+            <zeebe:input source="GET" target="method" />
+            <zeebe:input source="https://raw.githubusercontent.com/NPDeehan/TestDataDump/refs/heads/main/spaceship/mission_brief.md" target="url" />
+            <zeebe:input source="=false" target="storeResponse" />
+            <zeebe:input source="=false" target="followRedirects" />
+            <zeebe:input source="=20" target="connectionTimeoutInSeconds" />
+            <zeebe:input source="=20" target="readTimeoutInSeconds" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="elementTemplateVersion" value="13" />
+            <zeebe:header key="elementTemplateId" value="io.camunda.connectors.HttpJson.v2" />
+            <zeebe:header key="resultVariable" value="toolCallResult" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:intermediateCatchEvent id="Event_0m8dzxr" name="Wake Up to Check Status">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#10;  &#34;Outcome&#34; : &#34;waited: &#34;+durationToWait&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0qfo9kt</bpmn:incoming>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_1jw3o1j">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">=durationToWait</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:scriptTask id="Activity_0dcm91w" name="Wait for Status Update">
+        <bpmn:documentation>Use this tool in order to wait for a specific time frame. While waiting you'll be informed of any change in mission state by the sensors.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=true" resultVariable="triggerTimer" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.duration, &#34;This is the length of time you&#39;d like to wait. formated in ISO8601 (e.g. PT1H = 1 hour&#34;)" target="durationToWait" />
+            <zeebe:output source="=durationToWait" target="durationToWait" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_0dv1xfi</bpmn:outgoing>
+      </bpmn:scriptTask>
+      <bpmn:eventBasedGateway id="Gateway_1g2q0zh">
+        <bpmn:incoming>Flow_0dv1xfi</bpmn:incoming>
+        <bpmn:outgoing>Flow_0qfo9kt</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0y1tq3b</bpmn:outgoing>
+      </bpmn:eventBasedGateway>
+      <bpmn:sequenceFlow id="Flow_0qfo9kt" sourceRef="Gateway_1g2q0zh" targetRef="Event_0m8dzxr" />
+      <bpmn:sequenceFlow id="Flow_0dv1xfi" sourceRef="Activity_0dcm91w" targetRef="Gateway_1g2q0zh" />
+      <bpmn:sequenceFlow id="Flow_0y1tq3b" sourceRef="Gateway_1g2q0zh" targetRef="Event_1v7iep8" />
+      <bpmn:scriptTask id="Activity_1arie0m" name="Update Ship Status">
+        <bpmn:documentation>Use this tool to keep the ship status up today. You can change any value in the current status</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=context merge(shipStatus, updatedFields)" resultVariable="shipStatus" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(&#10;  toolCall.updatedFields,&#10;  &#34;A partial ship status object containing only the sections and fields to update. Mirror the exact structure of the ship status object. For example, to update shields and destination: {systems: {hull_integrity: 92, shields: 50, engine_power: 88, life_support: 100, weapons_online: true}, navigation: {current_location: &#39;Asteroid Belt - Sector 7&#39;, destination: &#39;Mars Base&#39;, speed_km_s: 42.5, eta_hours: 18}}. Always include ALL fields within any section you update, not just the changed ones.&#34;,&#10;  &#34;object&#34;&#10;)" target="updatedFields" />
+            <zeebe:output source="=shipStatus" target="toolCallResult" />
+            <zeebe:output source="=shipStatus" target="shipStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:scriptTask>
+      <bpmn:intermediateCatchEvent id="Event_1v7iep8" name="Wake">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#10;  &#34;UpdateOnTheClaim&#34; : UpdateOnTheClaim&#10;}" target="toolCallResult" />
+            <zeebe:output source="=false" target="wakeUp" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0y1tq3b</bpmn:incoming>
+        <bpmn:conditionalEventDefinition id="ConditionalEventDefinition_13o1twq">
+          <bpmn:extensionElements>
+            <zeebe:conditionalFilter variableEvents="update" />
+          </bpmn:extensionElements>
+          <bpmn:condition xsi:type="bpmn:tFormalExpression">=wakeUp</bpmn:condition>
+        </bpmn:conditionalEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:userTask id="Activity_1oy0j1q" name="Send Suggestion to Pilot">
+        <bpmn:documentation>Use this tool in order to contact the Pilot of the ship. The Pilot is in charge of the course, speed and menuvers. You can make suggestions to regarding any of those 3 objectives</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.suggestion, &#34;This is the suggestion you have for the pilot, you should always try to give at least two suggestions and let the pilot pick one. Unless you&#39;re relaying a direct order format in markdown&#34;)" target="suggestion" />
+            <zeebe:output source="={&#10;  &#34;responseFromPilot&#34; : reportFromCommander,&#10;  &#34;missionStatusUpdate&#34; : mission.missionStatus&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:formDefinition formId="send-suggestion-to-commander-1j42wts" />
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:userTask id="Activity_0rx0tc2" name="Send Suggestion to Doctor">
+        <bpmn:documentation>Use this tool in order to contact the ships doctor. The Doctor can treat injured crew members or diagnose illnesses or strange medical stuff</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.suggestion, &#34;This is the suggestion you have for the doctor, you should always try to give at least two suggestions and let the pilot pick one. Unless you&#39;re relaying a direct order format in markdown&#34;)" target="suggestion" />
+            <zeebe:output source="={&#10;  &#34;responseFromPilot&#34; : reportFromCommander,&#10;  &#34;missionStatusUpdate&#34; : mission.missionStatus&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:formDefinition formId="send-suggestion-to-commander-1j42wts" />
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:scriptTask id="Activity_00yqj4s" name="Fire Weapons">
+        <bpmn:documentation>Use this tool to attempt to fire the weapons</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=true" resultVariable="active" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.targetDetails, &#34;these are the details of the target you want to hit&#34;)" target="targetDetails" />
+            <zeebe:output source="={&#10;  &#34;TargetDestroyed&#34; : even(now().second)&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:scriptTask>
+      <bpmn:userTask id="Activity_1yb7wtq" name="Send Suggestion to Engineering">
+        <bpmn:documentation>Use this tool in order to contact the engineer of the ship. The Engineer is in charge of maintaining the sheilds and the hull. They can be called upon to try to fix them.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.suggestion, &#34;This is the suggestion you have for the engineer, you should always try to give at least two suggestions and let the engineer pick one. Unless you&#39;re relaying a direct order format in markdown&#34;)" target="suggestion" />
+            <zeebe:output source="={&#10;  &#34;responseFromPilot&#34; : reportFromCommander,&#10;  &#34;missionStatusUpdate&#34; : mission.missionStatus&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:formDefinition formId="send-suggestion-to-commander-1j42wts" />
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:scriptTask id="Activity_00bl5ey" name="Turn on Sheilds">
+        <bpmn:documentation>Use this tool to attempt to activate shields</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=true" resultVariable="active" />
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#10;  &#34;DidTheShieldsTurnOn&#34; : even(now().second)&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:scriptTask>
+      <bpmn:scriptTask id="Activity_0sq7w0h" name="Sell Stock At Market">
+        <bpmn:documentation>Use this tool to sell items in your cargo hold on the market</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=true" resultVariable="marketSaleAttempted" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.itemForSale, &#34;What is the name of the item you want to sell, along with the amount and the price you&#39;re looking for&#34;)" target="itemForSale" />
+            <zeebe:output source="={&#10;  &#34;WasABuyerFound&#34; : even(now().second)&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:scriptTask>
+      <bpmn:scriptTask id="Activity_0o41q3z" name="Buy Stock At Market">
+        <bpmn:documentation>Use this tool to buy items from the Market</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=true" resultVariable="marketPurchaseAttempted" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.itemForPurchase, &#34;What is the name of the item you want to purchase, along with the amount and the price you&#39;re looking to spend on it&#34;)" target="itemForPurchase" />
+            <zeebe:output source="={&#10;  &#34;WasASellerFound&#34; : even(now().second)&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:scriptTask>
+    </bpmn:adHocSubProcess>
+    <bpmn:endEvent id="Event_0nuc3uz" name="Mission Complete">
+      <bpmn:incoming>Flow_0etgjnd</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0etgjnd" sourceRef="Activity_0ab94rm" targetRef="Event_0nuc3uz" />
+    <bpmn:boundaryEvent id="Event_0elfq1b" name="All Crew Members are down" attachedToRef="Activity_0ab94rm">
+      <bpmn:outgoing>Flow_10ifcht</bpmn:outgoing>
+      <bpmn:conditionalEventDefinition id="ConditionalEventDefinition_1wydiys">
+        <bpmn:extensionElements>
+          <zeebe:conditionalFilter variableEvents="update" />
+        </bpmn:extensionElements>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">=shipStatus.crew.active = 0</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_1gkcyun" name="Life Support is Gone" attachedToRef="Activity_0ab94rm">
+      <bpmn:outgoing>Flow_0tuhjux</bpmn:outgoing>
+      <bpmn:conditionalEventDefinition id="ConditionalEventDefinition_16yxuyf">
+        <bpmn:extensionElements>
+          <zeebe:conditionalFilter variableEvents="update" />
+        </bpmn:extensionElements>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">=shipStatus.systems.life_support = 0</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_16qwj63" name="Out of Fuel" attachedToRef="Activity_0ab94rm">
+      <bpmn:outgoing>Flow_13xmqav</bpmn:outgoing>
+      <bpmn:conditionalEventDefinition id="ConditionalEventDefinition_191o0rd">
+        <bpmn:extensionElements>
+          <zeebe:conditionalFilter variableEvents="update" />
+        </bpmn:extensionElements>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">=shipStatus.fuel.current_percent = 0</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_0jy0cg7" name="Mission Failed">
+      <bpmn:incoming>Flow_10ifcht</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_10ifcht" sourceRef="Event_0elfq1b" targetRef="Event_0jy0cg7" />
+    <bpmn:endEvent id="Event_1q4j3e2" name="Mission Failed">
+      <bpmn:incoming>Flow_0tuhjux</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0tuhjux" sourceRef="Event_1gkcyun" targetRef="Event_1q4j3e2" />
+    <bpmn:endEvent id="Event_19y97ew" name="Mission Failed">
+      <bpmn:incoming>Flow_13xmqav</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_13xmqav" sourceRef="Event_16qwj63" targetRef="Event_19y97ew" />
+    <bpmn:group id="Group_1oijfts" categoryValueRef="CategoryValue_1bqtyfx" />
+  </bpmn:process>
+  <bpmn:message id="Message_1hu4e83" name="Report">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=missionKey" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_1aes4cr" name="CaseUpdate">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=applicationId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:signal id="Signal_0llk2bq" name="=&#34;Wake&#34;+missionKey" />
+  <bpmn:category id="Category_064205f">
+    <bpmn:categoryValue id="CategoryValue_1bqtyfx" value="New Features" />
+  </bpmn:category>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Rocinante">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="160" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="203" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ayzmmb_di" bpmnElement="Activity_0ab94rm" isExpanded="true">
+        <dc:Bounds x="290" y="78" width="1140" height="802" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0g5q7ts_di" bpmnElement="Activity_0i6rfby" isExpanded="true">
+        <dc:Bounds x="1110" y="140" width="210" height="140" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1plf04k_di" bpmnElement="Event_167d4y6">
+        <dc:Bounds x="1150" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1138" y="225" width="62" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1mc6iml_di" bpmnElement="Event_0e11017">
+        <dc:Bounds x="1242" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1217" y="225" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_11r4slg_di" bpmnElement="Flow_11r4slg">
+        <di:waypoint x="1186" y="200" />
+        <di:waypoint x="1242" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_03s26ga_di" bpmnElement="Activity_0614p1c">
+        <dc:Bounds x="390" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1h2beai_di" bpmnElement="Activity_0bemxc8">
+        <dc:Bounds x="660" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1aol2by_di" bpmnElement="Event_0m8dzxr">
+        <dc:Bounds x="1012" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="998" y="225" width="66" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q1n224_di" bpmnElement="Activity_0dcm91w">
+        <dc:Bounds x="810" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ej9wod_di" bpmnElement="Gateway_1g2q0zh">
+        <dc:Bounds x="935" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mkv8ap_di" bpmnElement="Activity_1arie0m">
+        <dc:Bounds x="660" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0cqjdlp_di" bpmnElement="Event_1v7iep8">
+        <dc:Bounds x="1012" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1017" y="335" width="28" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_01vehg8" bpmnElement="Activity_1oy0j1q">
+        <dc:Bounds x="460" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_12m3say" bpmnElement="Activity_0rx0tc2">
+        <dc:Bounds x="600" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bluv20_di" bpmnElement="Activity_00yqj4s">
+        <dc:Bounds x="870" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ewd7lc" bpmnElement="Activity_1yb7wtq">
+        <dc:Bounds x="460" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1hoapii" bpmnElement="Activity_00bl5ey">
+        <dc:Bounds x="870" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19jykah_di" bpmnElement="Activity_0sq7w0h">
+        <dc:Bounds x="1020" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0h0v707" bpmnElement="Activity_0o41q3z">
+        <dc:Bounds x="1020" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0qfo9kt_di" bpmnElement="Flow_0qfo9kt">
+        <di:waypoint x="985" y="200" />
+        <di:waypoint x="1012" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dv1xfi_di" bpmnElement="Flow_0dv1xfi">
+        <di:waypoint x="910" y="200" />
+        <di:waypoint x="935" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y1tq3b_di" bpmnElement="Flow_0y1tq3b">
+        <di:waypoint x="960" y="225" />
+        <di:waypoint x="960" y="310" />
+        <di:waypoint x="1012" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0nuc3uz_di" bpmnElement="Event_0nuc3uz">
+        <dc:Bounds x="1742" y="160" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1716" y="203" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jy0cg7_di" bpmnElement="Event_0jy0cg7">
+        <dc:Bounds x="1532" y="442" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1515" y="485" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1q4j3e2_di" bpmnElement="Event_1q4j3e2">
+        <dc:Bounds x="1532" y="352" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1515" y="395" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_19y97ew_di" bpmnElement="Event_19y97ew">
+        <dc:Bounds x="1532" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1515" y="305" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_1oijfts_di" bpmnElement="Group_1oijfts">
+        <dc:Bounds x="398" y="380" width="902" height="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="816" y="387" width="69" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ux64e4_di" bpmnElement="Event_16qwj63">
+        <dc:Bounds x="1412" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1362" y="303" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0i5d7y8_di" bpmnElement="Event_1gkcyun">
+        <dc:Bounds x="1412" y="352" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1344" y="386" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0eufvso_di" bpmnElement="Event_0elfq1b">
+        <dc:Bounds x="1412" y="442" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1335" y="478" width="90" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ltbnot_di" bpmnElement="Flow_0ltbnot">
+        <di:waypoint x="208" y="178" />
+        <di:waypoint x="290" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0etgjnd_di" bpmnElement="Flow_0etgjnd">
+        <di:waypoint x="1430" y="178" />
+        <di:waypoint x="1742" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10ifcht_di" bpmnElement="Flow_10ifcht">
+        <di:waypoint x="1448" y="460" />
+        <di:waypoint x="1532" y="460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tuhjux_di" bpmnElement="Flow_0tuhjux">
+        <di:waypoint x="1448" y="370" />
+        <di:waypoint x="1532" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13xmqav_di" bpmnElement="Flow_13xmqav">
+        <di:waypoint x="1448" y="280" />
+        <di:waypoint x="1532" y="280" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
