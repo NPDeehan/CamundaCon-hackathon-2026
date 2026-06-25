@@ -42,6 +42,8 @@ There's a dedicated front end that shows sensor readings, crew status, and ship 
 
 You don't need it to run the process, but it makes the demo significantly more compelling and is the recommended way to interact with a running mission.
 
+![The Rocinante — Ship Dashboard](img/Frontend.png)
+
 ---
 
 ## What's In This Repo
@@ -49,6 +51,8 @@ You don't need it to run the process, but it makes the demo significantly more c
 ### Starter Process (root folder)
 
 This is where you should begin:
+
+![The Rocinante — Starter BPMN](img/shipTemplate.png)
 
 | File | Description |
 |------|-------------|
